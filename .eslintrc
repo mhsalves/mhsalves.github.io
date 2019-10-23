@@ -2,5 +2,8 @@
   "extends": [
     "eslint-config-airbnb"
   ],
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-props-no-spreading": ["off"]
+  }
 }
