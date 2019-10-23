@@ -1,0 +1,8 @@
+# node 
+node_modules
+
+# export 
+out
+
+# build
+dist
