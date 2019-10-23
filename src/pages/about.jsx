@@ -2,7 +2,7 @@ import React from 'react';
 import pJson from '../../package.json';
 
 /**
- * If you are in dev enviroment, you can remove 
+ * If you are in dev enviroment, you can remove
  * ${pJson.name} from anchor below.
  */
 function About() {
@@ -14,4 +14,4 @@ function About() {
   );
 }
 
-export default About; 
+export default About;
