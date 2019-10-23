@@ -1,0 +1,38 @@
+{
+  "name": "next-ghpages-template",
+  "version": "0.1.0",
+  "description": "A template for clients should use the Github Pages, React and SSR using NextJS.",
+  "scripts": {
+    "dev": "next src",
+    "build": "next build src",
+    "start": "next start src",
+    "export": "next export -o out/ src",
+    "deploy:export": "npm run build && npm run export",
+    "deploy:setup": "touch out/.nojekyll",
+    "deploy:commit": "git add out/ && git commit -m \"deploy: new features\"",
+    "deploy:stage": "git subtree split --prefix out -b deploy/stage",
+    "deploy:push": "git push origin deploy/stage:gh-pages --force-with-lease",
+    "deploy:clean": "git branch -D deploy/stage && git reset HEAD~1 --hard",
+    "deploy": "npm run deploy:export && npm run deploy:setup && npm run deploy:commit && npm run deploy:stage && npm run deploy:push && npm run deploy:clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhsalves/mhsalves.github.io.git"
+  },
+  "keywords": [
+    "my",
+    "website",
+    "portifolio"
+  ],
+  "author": "Matheus Alves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhsalves/mhsalves.github.io/issues"
+  },
+  "homepage": "https://github.com/mhsalves/mhsalves.github.io#readme",
+  "dependencies": {
+    "next": "9.1.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2"
+  }
+}
