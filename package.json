@@ -7,6 +7,7 @@
     "build": "next build src",
     "start": "next start src",
     "export": "next export -o out/ src",
+    "eslint": "eslint --ext .jsx,.js ./",
     "deploy:export": "npm run build && npm run export",
     "deploy:setup": "touch out/.nojekyll && touch out/CNAME && echo \"matheusalves.dev\" >> out/CNAME",
     "deploy:commit": "git add out/ && git commit -m \"deploy: new features\"",
