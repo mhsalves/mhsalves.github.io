@@ -1,5 +1,9 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import { ThemeProvider } from 'styled-components';
+
+import GlobalCSS from '../bosons/globalCSS';
+import themes from '../bosons/themes';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -17,9 +21,12 @@ class MyApp extends App {
     } = this.props;
 
     return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
+      <ThemeProvider theme={themes.base}>
+        <Container>
+          <GlobalCSS />
+          <Component {...pageProps} />
+        </Container>
+      </ThemeProvider>
     );
   }
 }
