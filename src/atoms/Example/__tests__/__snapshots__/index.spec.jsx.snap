@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing: Example component should render correctly 1`] = `
+.c0 {
+  font-size: 1.333rem;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+<p
+  className="c0"
+>
+  Example Component
+</p>
+`;
