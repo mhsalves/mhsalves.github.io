@@ -6,7 +6,8 @@ const Text = styled.p`
   margin: 0;
 
   ${({ theme: { breakpoints } }) => breakpoints.sm} {
-    margin: 24px;
+    margin: 24px auto;
+    max-width: ${({ theme: { widths } }) => widths.narrow};
   }
 `;
 

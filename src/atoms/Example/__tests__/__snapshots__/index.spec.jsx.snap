@@ -9,7 +9,8 @@ exports[`testing: Example component should render correctly 1`] = `
 
 @media (min-width:576px) {
   .c0 {
-    margin: 24px;
+    margin: 24px auto;
+    max-width: 760px;
   }
 }
 
