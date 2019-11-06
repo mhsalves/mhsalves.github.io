@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import GlobalCSS from '../bosons/globalCSS';
 import themes from '../bosons/themes';
+import FontLoader from '../bosons/FontLoader';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -23,6 +24,7 @@ class MyApp extends App {
     return (
       <React.StrictMode>
         <ThemeProvider theme={themes.base}>
+          <FontLoader />
           <GlobalCSS />
           <Component {...pageProps} />
         </ThemeProvider>
