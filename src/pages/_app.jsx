@@ -21,12 +21,14 @@ class MyApp extends App {
     } = this.props;
 
     return (
-      <ThemeProvider theme={themes.base}>
-        <Container>
-          <GlobalCSS />
-          <Component {...pageProps} />
-        </Container>
-      </ThemeProvider>
+      <React.StrictMode>
+        <ThemeProvider theme={themes.base}>
+          <Container>
+            <GlobalCSS />
+            <Component {...pageProps} />
+          </Container>
+        </ThemeProvider>
+      </React.StrictMode>
     );
   }
 }
