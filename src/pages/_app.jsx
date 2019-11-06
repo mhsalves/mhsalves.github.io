@@ -1,5 +1,5 @@
 import React from 'react';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalCSS from '../bosons/globalCSS';
@@ -21,12 +21,12 @@ class MyApp extends App {
     } = this.props;
 
     return (
-      <ThemeProvider theme={themes.base}>
-        <Container>
+      <React.StrictMode>
+        <ThemeProvider theme={themes.base}>
           <GlobalCSS />
           <Component {...pageProps} />
-        </Container>
-      </ThemeProvider>
+        </ThemeProvider>
+      </React.StrictMode>
     );
   }
 }
