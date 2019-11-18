@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import breakpoints from './breakpoints';
 
 const family = {
-  heroNew: 'hero-new, sans-serif',
+  nunito: 'Nunito Sans, sans-serif',
 };
 
 const scales = {
@@ -27,7 +27,7 @@ const lineHeight = (scale) => ({
 });
 
 const common = css`
-  font-family: ${family.heroNew};
+  font-family: ${family.nunito};
 `;
 
 const sizeScaled = (size) => css`
