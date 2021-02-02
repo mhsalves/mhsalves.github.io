@@ -81,6 +81,7 @@ const Subtitle = styled.p`
 
 const Button = styled.a`
   ${({ theme: { button } }) => button.primary}
+  text-decoration: none;
 `;
 
 export default {
