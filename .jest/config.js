@@ -5,8 +5,8 @@
 module.exports = {
   rootDir: '../',
   collectCoverage: true,
-  setupFiles: ['<rootDir>/.jest/jest.setup.js'],
-  setupFilesAfterEnv: ['<rootDir>/.jest/jest.framework.js'],
+  setupFiles: ['<rootDir>/.jest/setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/.jest/framework.js'],
   coverageThreshold: {
     global: {
       branches: 100,
