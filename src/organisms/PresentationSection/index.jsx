@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import data from './data';
 import Style from './styles';
@@ -18,4 +18,4 @@ function PresentationSection() {
   );
 }
 
-export default PresentationSection;
+export default memo(PresentationSection);
