@@ -1,18 +1,23 @@
 import React, { memo } from 'react';
 
-import data from './data';
+import useTranslate from '../../bosons/i18n/useTranslate';
+
 import Style from './styles';
+import langPtBr from './lang/ptBr';
+import langEnUS from './lang/enUs';
 
 function PresentationSection() {
+  const translate = useTranslate(langPtBr, langEnUS);
+
   return (
     <Style.Container>
       <Style.Content>
         <Style.Title>
-          {data.prefixTitle}
-          <Style.TitleHighlight>{data.myName}</Style.TitleHighlight>
+          {translate.prefixTitle}
+          <Style.TitleHighlight>{translate.myName}</Style.TitleHighlight>
         </Style.Title>
-        <Style.Subtitle>{data.description}</Style.Subtitle>
-        <Style.Button>{data.moreButton}</Style.Button>
+        <Style.Subtitle>{translate.description}</Style.Subtitle>
+        <Style.Button>{translate.moreButton}</Style.Button>
       </Style.Content>
     </Style.Container>
   );
