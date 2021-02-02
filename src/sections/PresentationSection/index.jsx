@@ -12,7 +12,7 @@ function PresentationSection() {
           <Style.TitleHighlight>{data.myName}</Style.TitleHighlight>
         </Style.Title>
         <Style.Subtitle>{data.description}</Style.Subtitle>
-        <Style.Button>{data.moreButton}</Style.Button>
+        <Style.Button href="#about-me">{data.moreButton}</Style.Button>
       </Style.Content>
     </Style.Container>
   );
