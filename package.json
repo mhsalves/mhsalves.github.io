@@ -8,7 +8,7 @@
     "start": "next start src",
     "export": "next export -o docs/ src",
     "eslint": "eslint --ext .jsx,.js ./",
-    "test": "jest",
+    "test": "jest --config .jest/config.js",
     "release:setup": "touch docs/.nojekyll && touch docs/CNAME && echo \"matheusalves.dev\" >> docs/CNAME",
     "release:commit": "git add docs/ && git commit -m \"release: new features\"",
     "release": "npm run build && npm run export && npm run release:setup && npm run release:commit"
