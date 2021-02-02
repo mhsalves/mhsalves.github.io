@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { string } from 'prop-types';
+import Head from 'next/head';
 
 function Basic(props) {
   const { title, description } = props;
 
   return (
-    <>
-      <title>{title}</title>
-      <meta content="description">{description}</meta>
-    </>
+    <Head>
+      <title key="meta-title">{title}</title>
+      <meta name="description" content={description} key="meta-description" />
+    </Head>
   );
 }
 
@@ -17,9 +18,9 @@ Basic.propTypes = {
   description: string,
 };
 
-Basic.propTypes = {
+Basic.defaultProps = {
   title: 'Matheus Alves',
   description: 'Enjoy the Matheus Alves postfolio',
 };
 
-export default Basic;
+export default memo(Basic);
