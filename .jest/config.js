@@ -7,6 +7,9 @@ module.exports = {
   collectCoverage: true,
   setupFiles: ['<rootDir>/.jest/setup.js'],
   setupFilesAfterEnv: ['<rootDir>/.jest/framework.js'],
+  testMatch: [
+    '<rootDir>/src/**/__tests__/*.spec.(js|jsx)',
+  ],
   coverageThreshold: {
     global: {
       branches: 100,
