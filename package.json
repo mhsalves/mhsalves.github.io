@@ -7,14 +7,12 @@
     "build": "next build src",
     "start": "next start src",
     "export": "next export -o docs/ src",
-    "export2": "next export -o out/ src",
     "eslint": "eslint --ext .jsx,.js ./",
     "test": "jest --config .jest/config.js",
-    "release2:setup": "touch out/.nojekyll && touch out/CNAME && echo \"matheusalves.dev\" >> out/CNAME",
-    "release2": "npm run build && npm run export2 && npm run release2:setup",
-    "release:setup": "touch docs/.nojekyll && touch docs/CNAME && echo \"matheusalves.dev\" >> docs/CNAME",
-    "release:commit": "git add docs/ && git commit -m \"release: new features\"",
-    "release": "npm run build && npm run export && npm run release:setup && npm run release:commit"
+    "release:netlify": "npm run build && npm run export",
+    "release:gp:setup": "touch docs/.nojekyll && touch docs/CNAME && echo \"matheusalves.dev\" >> docs/CNAME",
+    "release:gp:commit": "git add docs/ && git commit -m \"release: new features\"",
+    "release:gp": "npm run build && npm run export && npm run release:gp:setup && npm run release:gp:commit"
   },
   "repository": {
     "type": "git",
