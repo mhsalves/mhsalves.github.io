@@ -5,6 +5,10 @@ import reset from './reset';
 const globalCSS = createGlobalStyle`
   ${reset}
   ${normalize}
+
+  html {
+    scroll-behavior: smooth;
+  }
 `;
 
 export default globalCSS;
