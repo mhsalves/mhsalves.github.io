@@ -16,6 +16,7 @@ function Share() {
       <meta property="og:type" content={data.type} key="meta-og-type" />
       <meta property="og:url" content={data.currentUrl} key="meta-og-url" />
       <meta property="og:image" content={data.image} key="meta-og-image" />
+      <meta property="og:image:secure_url" content={data.image} key="meta-og-image-secure-url" />
       <meta property="og:description" content={data.description} key="meta-og-description" />
     </Head>
   );
