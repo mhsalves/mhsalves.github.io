@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import breakpoints from './breakpoints';
 
 const family = {
-  nunito: 'Nunito Sans, sans-serif',
+  nunito: 'Work Sans, sans-serif',
 };
 
 const scales = {
