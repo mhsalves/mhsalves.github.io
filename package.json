@@ -7,7 +7,7 @@
     "build": "next build src",
     "start": "next start src",
     "export": "next export -o docs/ src",
-    "eslint": "eslint --ext .jsx,.js ./",
+    "eslint": "eslint --ext .jsx,.js ./src",
     "test": "jest --config .jest/config.js",
     "release:netlify": "npm run build && npm run export",
     "release:gp:setup": "touch docs/.nojekyll && touch docs/CNAME && echo \"matheusalves.dev\" >> docs/CNAME",
