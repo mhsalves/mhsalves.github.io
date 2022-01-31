@@ -3,7 +3,7 @@
     "eslint-config-airbnb",
     "plugin:jest/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "rules": {
     "react/jsx-props-no-spreading": ["off"],
     "import/no-extraneous-dependencies": ["error", {
