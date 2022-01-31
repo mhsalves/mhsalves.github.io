@@ -1,8 +1,13 @@
 {
   "extends": [
     "eslint-config-airbnb",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
+  "env": {
+    "es6": true,
+    "jest": true
+  },
   "parser": "@babel/eslint-parser",
   "rules": {
     "react/jsx-props-no-spreading": ["off"],
