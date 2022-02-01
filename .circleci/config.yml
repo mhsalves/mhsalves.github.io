@@ -1,17 +1,24 @@
 version: 2.1
+
 orbs:
-  node: circleci/node@5.0.0
+    node: circleci/node@5.0.0
+
 jobs:
-  install-node:
-    docker:
-      - image: node:17.4.0
-    steps:
-      - checkout
-      - node/install:
-          install-yarn: true
-          node-version: '17.4'
-      - run: node --version
+    install-node:
+        docker:
+            - image: node:17.4.0
+        steps:
+            - checkout
+            - node/install:
+                install-yarn: true
+                node-version: '17.4'
+            - run: node --version
+            - run:
+                name: linter
+                command: |
+                    yarn eslint
+
 workflows:
-  node-tests:
-    jobs:
-      - install-node
+    node-tests: 
+        jobs:
+            - install-node
