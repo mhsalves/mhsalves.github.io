@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import renderer from 'react-test-renderer';
 
 import button from '../button';
-import withTheme from 'hoc/withTheme';
+import withTheme from 'test-utils/withTheme';
 
 describe('testing: theme-base breakpoints', () => {
   test('should match primary button layout correctly', () => {
