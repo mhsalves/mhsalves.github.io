@@ -16,10 +16,8 @@ It is a static site built with [NextJS](https://nextjs.org/) and [styled-compone
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) 20.x (the version this project is currently developed with)
-- [npm](https://www.npmjs.com/) 10.x
-
-A `yarn.lock` is also committed, but it is stale — installing through Yarn 1 currently produces a tree where the test suite cannot start, so prefer npm.
+- [Node.js](https://nodejs.org/) 20.x (CI runs 20.12.2)
+- [Yarn](https://classic.yarnpkg.com/) 1.x — the project ships a `yarn.lock`, and CI installs from it
 
 ## Running locally
 
@@ -28,10 +26,10 @@ Clone the repository and install the dependencies:
 ```bash
 git clone git@github.com:mhsalves/mhsalves.github.io.git
 cd mhsalves.github.io
-npm install --legacy-peer-deps
+yarn install
 ```
 
-> `--legacy-peer-deps` is required: the project runs React 17 while `enzyme-adapter-react-16` still declares a React 16 peer dependency, so a plain `npm install` stops with an `ERESOLVE` error.
+> Prefer Yarn, since it matches the committed `yarn.lock` and what CI does. If you install with npm instead, use `npm install --legacy-peer-deps`: the project runs React 17 while `enzyme-adapter-react-16` still declares a React 16 peer dependency, so a plain `npm install` stops with an `ERESOLVE` error.
 
 Start the development server:
 

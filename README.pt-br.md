@@ -16,10 +16,8 @@ Meu site pessoal e portfólio, no ar em **[matheusalves.dev](https://matheusalve
 
 ## Pré-requisitos
 
-- [Node.js](https://nodejs.org/) 20.x (versão usada atualmente no projeto)
-- [npm](https://www.npmjs.com/) 10.x
-
-O `yarn.lock` também está versionado, mas está desatualizado — instalar via Yarn 1 hoje gera uma árvore em que a suíte de testes não consegue iniciar, então prefira o npm.
+- [Node.js](https://nodejs.org/) 20.x (o CI roda 20.12.2)
+- [Yarn](https://classic.yarnpkg.com/) 1.x — o projeto versiona um `yarn.lock`, e o CI instala a partir dele
 
 ## Rodando localmente
 
@@ -28,10 +26,10 @@ Clone o repositório e instale as dependências:
 ```bash
 git clone git@github.com:mhsalves/mhsalves.github.io.git
 cd mhsalves.github.io
-npm install --legacy-peer-deps
+yarn install
 ```
 
-> O `--legacy-peer-deps` é necessário: o projeto usa React 17 enquanto o `enzyme-adapter-react-16` ainda declara peer dependency de React 16, então um `npm install` normal falha com erro `ERESOLVE`.
+> Prefira o Yarn, que é o que corresponde ao `yarn.lock` versionado e ao que o CI faz. Se preferir instalar com npm, use `npm install --legacy-peer-deps`: o projeto usa React 17 enquanto o `enzyme-adapter-react-16` ainda declara peer dependency de React 16, então um `npm install` normal falha com erro `ERESOLVE`.
 
 Suba o servidor de desenvolvimento:
 
