@@ -68,20 +68,20 @@ npm start
 
 ```
 src/
-├── bosons/      Blocos base (temas, CSS global, meta tags, carregamento de fontes)
-├── components/  Componentes reutilizáveis
-├── hoc/         Higher-order components (ex.: withTheme)
+├── components/  UI reutilizável (MetaTags)
+├── sections/    Seções da página (PresentationSection, AboutSection)
+├── styles/      Tokens de tema, CSS global e carregamento de fontes
 ├── pages/       Páginas do NextJS (_app, _document, index)
 ├── public/      Arquivos estáticos copiados para a raiz do site
-└── sections/    Seções da página (PresentationSection, AboutSection)
+└── test-utils/  Helpers usados só pelas specs (withTheme)
 
 docs/            Site estático exportado e publicado pelo GitHub Pages (gerado)
 dist/            Saída de build do NextJS (gerada, ignorada pelo git)
 .jest/           Configuração e setup do Jest
 ```
 
-O [`specs/architecture.md`](specs/architecture.md) detalha essas pastas e define
-a estrutura mais simples para onde o projeto deve caminhar.
+O [`specs/architecture.md`](specs/architecture.md) detalha essas pastas e traz a
+regra para decidir onde cada arquivo novo deve ficar.
 
 ## Testes
 

@@ -68,12 +68,12 @@ npm start
 
 ```
 src/
-├── bosons/      Base building blocks (themes, global CSS, meta tags, font loader)
-├── components/  Reusable components
-├── hoc/         Higher-order components (e.g. withTheme)
+├── components/  Reusable UI (MetaTags)
+├── sections/    Page sections (PresentationSection, AboutSection)
+├── styles/      Theme tokens, global CSS and font loading
 ├── pages/       NextJS pages (_app, _document, index)
 ├── public/      Static assets copied to the site root
-└── sections/    Page sections (PresentationSection, AboutSection)
+└── test-utils/  Helpers imported only by specs (withTheme)
 
 docs/            Exported static site published by GitHub Pages (generated)
 dist/            NextJS build output (generated, git-ignored)
@@ -81,7 +81,7 @@ dist/            NextJS build output (generated, git-ignored)
 ```
 
 [`specs/architecture.md`](specs/architecture.md) documents these folders in
-detail and defines the simpler layout the project is moving to.
+detail, including the rule for where a new file belongs.
 
 ## Tests
 
