@@ -18,6 +18,7 @@ export default class extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="icon" href="favicon.svg" type="image/svg+xml" />
           {this.props.styleTags}
         </Head>
         <body>

@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-import Style from './styles';
+import Section from 'components/Section';
+import Reveal from 'components/Reveal';
+
 import data from './data';
+import Style from './styles';
 
 function AboutSection() {
   return (
-    <Style.Container id="about-me">
+    <Section id="about" eyebrow={data.eyebrow} title={data.title}>
       <Style.Content>
-        <Style.Image src="my-photo.jpg" />
-        <Style.InfoContainer>
-          <Style.InfoContent>
-            <Style.TitleContent>
-              <Style.Title>{data.title}</Style.Title>
-            </Style.TitleContent>
-            <Style.Description>{data.description}</Style.Description>
-            <Style.SubDescription>{data.subDescription}</Style.SubDescription>
-          </Style.InfoContent>
-        </Style.InfoContainer>
+        <Reveal>
+          <Style.Photo src={data.photo.src} alt={data.photo.alt} />
+        </Reveal>
+
+        <Reveal delay={80}>
+          <Style.Text>
+            {data.paragraphs.map((paragraph) => (
+              <Style.Paragraph key={paragraph.slice(0, 40)}>
+                {paragraph}
+              </Style.Paragraph>
+            ))}
+
+            <Style.Highlights>
+              {data.highlights.map((highlight) => (
+                <Style.Highlight key={highlight.label}>
+                  <Style.HighlightValue>{highlight.value}</Style.HighlightValue>
+                  <Style.HighlightLabel>{highlight.label}</Style.HighlightLabel>
+                </Style.Highlight>
+              ))}
+            </Style.Highlights>
+          </Style.Text>
+        </Reveal>
       </Style.Content>
-    </Style.Container>
+    </Section>
   );
 }
 
-export default AboutSection;
+export default memo(AboutSection);

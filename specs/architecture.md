@@ -17,16 +17,28 @@ explanation before it makes sense is too clever for a site this size.
 ```
 src/
 ├── components/        Reusable UI
-│   └── MetaTags/      Basic.jsx (title/description), Share.jsx (Open Graph)
+│   ├── Header/        Fixed nav bar
+│   ├── Footer/
+│   ├── Logo/          Monogram, also the favicon artwork
+│   ├── MetaTags/      Basic.jsx (title/description), Share.jsx (Open Graph)
+│   ├── Reveal/        Fade-up on scroll
+│   └── Section/       Shared section shell: spacing, width, heading
 ├── sections/          Page-level blocks composed by a route
-│   ├── PresentationSection/
-│   └── AboutSection/
+│   ├── HeroSection/
+│   ├── AboutSection/
+│   ├── ExperienceSection/
+│   ├── ProjectsSection/
+│   ├── SkillsSection/
+│   ├── EducationSection/
+│   └── ContactSection/
+├── data/              Content shared by more than one section
+│   └── profile.js     Name, role, location, contact links
 ├── styles/            Everything about how the app looks, globally
 │   ├── themes/        Design tokens, composed in themes/base/index.js
 │   ├── global/        Reset + normalize
 │   └── FontLoader/    Web font loading
 ├── pages/             Next routes: _app.jsx, _document.jsx, index.jsx
-├── public/            Images served from the site root
+├── public/            Images and favicon served from the site root
 ├── test-utils/        Helpers imported only by specs (withTheme)
 └── jsconfig.json      Makes src the import base
 ```
@@ -36,6 +48,7 @@ src/
 | Question | Answer |
 | --- | --- |
 | Used by two or more sections? | `components/` |
+| Content, not UI, used by two or more sections? | `data/` |
 | A block a route drops in whole? | `sections/` |
 | Decides how the whole app looks? | `styles/` |
 | Only ever imported by a `.spec.jsx`? | `test-utils/` |

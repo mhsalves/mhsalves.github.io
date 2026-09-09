@@ -9,6 +9,7 @@ function Basic(props) {
     <Head>
       <title key="meta-title">{title}</title>
       <meta name="description" content={description} key="meta-description" />
+      <meta name="author" content="Matheus Alves" key="meta-author" />
     </Head>
   );
 }
@@ -19,8 +20,8 @@ Basic.propTypes = {
 };
 
 Basic.defaultProps = {
-  title: 'Matheus Alves',
-  description: 'Enjoy the Matheus Alves postfolio',
+  title: 'Matheus Alves — Senior Software Engineer',
+  description: 'Senior Software Engineer at CESAR, in Manaus. Building for the web since 2012, from React architecture and micro-frontends to leading front-end teams.',
 };
 
 export default memo(Basic);

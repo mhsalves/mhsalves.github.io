@@ -1,70 +1,68 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 16px;
-
-  max-width: ${({ theme: { widths } }) => widths.max};
-
-  padding: 16px;
+  gap: 32px;
+  align-items: start;
 
   ${({ theme: { breakpoints } }) => breakpoints.md} {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 48px;
-    padding: 48px;
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
   }
 `;
 
-const Image = styled.img`
-  max-width: 100%;
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const InfoContent = styled.div`
-  display: grid;
-  grid-gap: 32px;
-`;
-
-const TitleContent = styled.div`
+const Photo = styled.img`
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
   display: block;
 `;
 
-const Title = styled.h2`
-  ${({ theme: { typography } }) => typography.h2}
-  display: inline-block;
-
-  border-top: 4px solid ${({ theme: { colors } }) => colors.primary.normal};
-  padding-top: 16px;
-  box-sizing: border-box;
+const Text = styled.div`
+  display: grid;
+  gap: 16px;
 `;
 
-const Description = styled.p`
+const Paragraph = styled.p`
   ${({ theme: { typography } }) => typography.normal}
+  color: ${({ theme: { colors } }) => colors.coal.normal};
+  margin: 0;
 `;
 
-const SubDescription = styled.p`
+const Highlights = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+`;
+
+const Highlight = styled.li`
+  border-left: 3px solid ${({ theme: { colors } }) => colors.primary.normal};
+  padding-left: 12px;
+`;
+
+const HighlightValue = styled.p`
+  ${({ theme: { typography } }) => typography.lead}
+  color: ${({ theme: { colors } }) => colors.coal.dark};
+  margin: 0;
+`;
+
+const HighlightLabel = styled.p`
   ${({ theme: { typography } }) => typography.small}
+  color: ${({ theme: { colors } }) => colors.secondary.normal};
+  margin: 0;
 `;
 
 export default {
-  Container,
   Content,
-  Image,
-  InfoContainer,
-  InfoContent,
-  TitleContent,
-  Title,
-  Description,
-  SubDescription,
+  Photo,
+  Text,
+  Paragraph,
+  Highlights,
+  Highlight,
+  HighlightValue,
+  HighlightLabel,
 };
