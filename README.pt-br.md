@@ -68,8 +68,10 @@ npm start
 
 ```
 src/
-├── components/  UI reutilizável (MetaTags)
-├── sections/    Seções da página (PresentationSection, AboutSection)
+├── components/  UI reutilizável (Header, Footer, Logo, LanguageToggle, MetaTags, Reveal, Section)
+├── sections/    Seções da página (Hero, About, Experience, Projects, Skills, Education, Contact)
+├── data/        Conteúdo usado por mais de uma seção (profile)
+├── i18n/        Contexto de idioma para o alternador EN / PT
 ├── styles/      Tokens de tema, CSS global e carregamento de fontes
 ├── pages/       Páginas do NextJS (_app, _document, index)
 ├── public/      Arquivos estáticos copiados para a raiz do site

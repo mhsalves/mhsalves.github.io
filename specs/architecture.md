@@ -17,16 +17,30 @@ explanation before it makes sense is too clever for a site this size.
 ```
 src/
 ├── components/        Reusable UI
-│   └── MetaTags/      Basic.jsx (title/description), Share.jsx (Open Graph)
+│   ├── Header/        Fixed nav bar
+│   ├── Footer/
+│   ├── Logo/          Monogram, also the favicon artwork
+│   ├── LanguageToggle/ EN / PT switch, lives in the header
+│   ├── MetaTags/      Basic.jsx (title/description), Share.jsx (Open Graph)
+│   ├── Reveal/        Fade-up on scroll
+│   └── Section/       Shared section shell: spacing, width, heading
 ├── sections/          Page-level blocks composed by a route
-│   ├── PresentationSection/
-│   └── AboutSection/
+│   ├── HeroSection/
+│   ├── AboutSection/
+│   ├── ExperienceSection/
+│   ├── ProjectsSection/
+│   ├── SkillsSection/
+│   ├── EducationSection/
+│   └── ContactSection/
+├── data/              Content shared by more than one section
+│   └── profile.js     Name, role, location, contact links
+├── i18n/              Language context, provider and useTranslation hook
 ├── styles/            Everything about how the app looks, globally
 │   ├── themes/        Design tokens, composed in themes/base/index.js
 │   ├── global/        Reset + normalize
 │   └── FontLoader/    Web font loading
 ├── pages/             Next routes: _app.jsx, _document.jsx, index.jsx
-├── public/            Images served from the site root
+├── public/            Images and favicon served from the site root
 ├── test-utils/        Helpers imported only by specs (withTheme)
 └── jsconfig.json      Makes src the import base
 ```
@@ -36,6 +50,8 @@ src/
 | Question | Answer |
 | --- | --- |
 | Used by two or more sections? | `components/` |
+| Content, not UI, used by two or more sections? | `data/` |
+| Translatable copy for one section? | that section's `data.js`, as `{ en, pt }` |
 | A block a route drops in whole? | `sections/` |
 | Decides how the whole app looks? | `styles/` |
 | Only ever imported by a `.spec.jsx`? | `test-utils/` |
@@ -99,6 +115,19 @@ Next 12 reads this natively, no webpack config needed. Jest does not read
 `moduleDirectories: ['node_modules', '<rootDir>/src']`. **Both have to agree**:
 change one and you must change the other, or specs and the build will disagree
 about what resolves.
+
+## Languages
+
+The page ships in English and Portuguese, English being what the HTML is
+exported with. Because the site is a static export there is no locale routing:
+`i18n/` holds a React context, and a reader's choice is applied on the client
+and remembered in `localStorage`.
+
+Each section keeps its own copy in its `data.js`, shaped as `{ en, pt }`, and
+reads it with `useTranslation(data)`. A missing translation falls back to
+English rather than rendering blank. Anything language-neutral — a photo
+filename, a repository name, the social links — sits outside the two halves and
+is imported directly.
 
 ## Why this replaced the old layout
 
