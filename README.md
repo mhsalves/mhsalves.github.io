@@ -12,11 +12,10 @@ It is a static site built with [NextJS](https://nextjs.org/) and [styled-compone
 - [styled-components](https://styled-components.com/) for styling and theming.
 - [Jest](https://jestjs.io/) + [Enzyme](https://enzymejs.github.io/enzyme/) for tests, with 100% coverage thresholds.
 - [ESLint](https://eslint.org/) with `eslint-config-next`, the framework's own preset, for linting.
-- [CircleCI](https://circleci.com/) to run the test suite on every push.
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) 20.x (CI runs 20.12.2)
+- [Node.js](https://nodejs.org/) 20.x
 - [Yarn](https://yarnpkg.com/) 4.18.0 — pinned by the `packageManager` field, and committed to `.yarn/releases`
 
 You do not need to install that exact Yarn yourself: the release is versioned in the repository and `.yarnrc.yml` points at it, so any Yarn already on your machine hands off to it. If you have none, enable the one bundled with Node:
@@ -35,7 +34,7 @@ cd mhsalves.github.io
 yarn install
 ```
 
-> Prefer Yarn, since it matches the committed `yarn.lock` and what CI does. If you install with npm instead, use `npm install --legacy-peer-deps`: the project runs React 17 while `enzyme-adapter-react-16` still declares a React 16 peer dependency, so a plain `npm install` stops with an `ERESOLVE` error.
+> Prefer Yarn, since it matches the committed `yarn.lock`. If you install with npm instead, use `npm install --legacy-peer-deps`: the project runs React 17 while `enzyme-adapter-react-16` still declares a React 16 peer dependency, so a plain `npm install` stops with an `ERESOLVE` error.
 
 Start the development server:
 

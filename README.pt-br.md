@@ -12,11 +12,10 @@ Meu site pessoal e portfólio, no ar em **[matheusalves.dev](https://matheusalve
 - [styled-components](https://styled-components.com/) para estilos e temas.
 - [Jest](https://jestjs.io/) + [Enzyme](https://enzymejs.github.io/enzyme/) para testes, com cobertura mínima de 100%.
 - [ESLint](https://eslint.org/) com o `eslint-config-next`, preset do próprio framework, para o lint.
-- [CircleCI](https://circleci.com/) para rodar a suíte de testes a cada push.
 
 ## Pré-requisitos
 
-- [Node.js](https://nodejs.org/) 20.x (o CI roda 20.12.2)
+- [Node.js](https://nodejs.org/) 20.x
 - [Yarn](https://yarnpkg.com/) 4.18.0 — fixado pelo campo `packageManager` e versionado em `.yarn/releases`
 
 Você não precisa instalar exatamente essa versão: o release está versionado no repositório e o `.yarnrc.yml` aponta para ele, então qualquer Yarn que você já tenha delega para essa versão. Se não tiver nenhum, habilite o que vem junto com o Node:
@@ -35,7 +34,7 @@ cd mhsalves.github.io
 yarn install
 ```
 
-> Prefira o Yarn, que é o que corresponde ao `yarn.lock` versionado e ao que o CI faz. Se preferir instalar com npm, use `npm install --legacy-peer-deps`: o projeto usa React 17 enquanto o `enzyme-adapter-react-16` ainda declara peer dependency de React 16, então um `npm install` normal falha com erro `ERESOLVE`.
+> Prefira o Yarn, que é o que corresponde ao `yarn.lock` versionado. Se preferir instalar com npm, use `npm install --legacy-peer-deps`: o projeto usa React 17 enquanto o `enzyme-adapter-react-16` ainda declara peer dependency de React 16, então um `npm install` normal falha com erro `ERESOLVE`.
 
 Suba o servidor de desenvolvimento:
 
