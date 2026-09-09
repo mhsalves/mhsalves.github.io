@@ -1,21 +1,12 @@
 {
-  "extends": [
-    "eslint-config-airbnb",
-    "plugin:jest/recommended",
-    "plugin:jsx-a11y/recommended"
-  ],
+  "root": true,
+  "extends": "next/core-web-vitals",
   "env": {
-    "es6": true,
     "jest": true
   },
-  "parser": "@babel/eslint-parser",
-  "rules": {
-    "react/jsx-props-no-spreading": ["off"],
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": [
-        "**/*.spec.jsx",
-        "jest.*"
-      ]
-    }]
+  "settings": {
+    "next": {
+      "rootDir": "src"
+    }
   }
 }
