@@ -80,6 +80,9 @@ dist/            NextJS build output (generated, git-ignored)
 .jest/           Jest configuration and setup files
 ```
 
+[`specs/architecture.md`](specs/architecture.md) documents these folders in
+detail and defines the simpler layout the project is moving to.
+
 ## Tests
 
 ```bash

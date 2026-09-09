@@ -80,6 +80,9 @@ dist/            Saída de build do NextJS (gerada, ignorada pelo git)
 .jest/           Configuração e setup do Jest
 ```
 
+O [`specs/architecture.md`](specs/architecture.md) detalha essas pastas e define
+a estrutura mais simples para onde o projeto deve caminhar.
+
 ## Testes
 
 ```bash
