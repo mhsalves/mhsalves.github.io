@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import themes from '../../bosons/themes';
+import themes from 'styles/themes';
 
 const Wrapped = (Component) => {
   const WithTheme = (props) => (
