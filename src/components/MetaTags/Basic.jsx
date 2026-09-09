@@ -21,7 +21,7 @@ Basic.propTypes = {
 
 Basic.defaultProps = {
   title: 'Matheus Alves — Senior Software Engineer',
-  description: 'Senior Software Engineer at CESAR, in Manaus. Building for the web since 2012, from React architecture and micro-frontends to leading front-end teams.',
+  description: 'Senior Software Engineer in Manaus. Building for the web since 2012, from React architecture and micro-frontends to leading front-end teams, and working with Mendix.',
 };
 
 export default memo(Basic);

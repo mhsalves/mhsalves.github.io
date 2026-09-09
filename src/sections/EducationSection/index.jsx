@@ -2,15 +2,18 @@ import React, { memo } from 'react';
 
 import Section from 'components/Section';
 import Reveal from 'components/Reveal';
+import { useTranslation } from 'i18n';
 
 import data from './data';
 import Style from './styles';
 
 function EducationSection() {
+  const content = useTranslation(data);
+
   return (
-    <Section id="education" eyebrow={data.eyebrow} title={data.title}>
+    <Section id="education" eyebrow={content.eyebrow} title={content.title}>
       <Style.List>
-        {data.items.map((item, index) => (
+        {content.items.map((item, index) => (
           <Style.Item key={`${item.school}-${item.period}`}>
             <Reveal delay={index * 70}>
               <Style.School>{item.school}</Style.School>

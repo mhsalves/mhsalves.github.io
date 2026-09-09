@@ -2,15 +2,18 @@ import React, { memo } from 'react';
 
 import Section from 'components/Section';
 import Reveal from 'components/Reveal';
+import { useTranslation } from 'i18n';
 
 import data from './data';
 import Style from './styles';
 
 function ExperienceSection() {
+  const content = useTranslation(data);
+
   return (
-    <Section id="experience" eyebrow={data.eyebrow} title={data.title}>
+    <Section id="experience" eyebrow={content.eyebrow} title={content.title}>
       <Style.Timeline>
-        {data.companies.map((item) => (
+        {content.companies.map((item) => (
           <Style.Entry key={item.company}>
             <Reveal>
               <Style.Company>{item.company}</Style.Company>

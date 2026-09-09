@@ -6,7 +6,7 @@ const data = {
   type: 'website',
   currentUrl: 'https://matheusalves.dev/',
   image: 'https://matheusalves.dev/my-photo-wide.jpg',
-  description: 'Senior Software Engineer at CESAR, in Manaus. Building for the web since 2012, from React architecture and micro-frontends to leading front-end teams.',
+  description: 'Senior Software Engineer in Manaus. Building for the web since 2012, from React architecture and micro-frontends to leading front-end teams, and working with Mendix.',
 };
 
 function Share() {

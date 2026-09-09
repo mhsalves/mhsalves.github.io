@@ -2,15 +2,18 @@ import React, { memo } from 'react';
 
 import Section from 'components/Section';
 import Reveal from 'components/Reveal';
+import { useTranslation } from 'i18n';
 
 import data from './data';
 import Style from './styles';
 
 function SkillsSection() {
+  const content = useTranslation(data);
+
   return (
-    <Section id="skills" eyebrow={data.eyebrow} title={data.title}>
+    <Section id="skills" eyebrow={content.eyebrow} title={content.title}>
       <Style.Groups>
-        {data.groups.map((group, index) => (
+        {content.groups.map((group, index) => (
           <Reveal key={group.name} delay={(index % 2) * 70}>
             <Style.Group>
               <Style.GroupName>{group.name}</Style.GroupName>
@@ -27,9 +30,9 @@ function SkillsSection() {
       <Style.Extras>
         <Reveal>
           <Style.Group>
-            <Style.GroupName>Languages</Style.GroupName>
+            <Style.GroupName>{content.languagesTitle}</Style.GroupName>
             <Style.List>
-              {data.languages.map((language) => (
+              {content.languages.map((language) => (
                 <Style.Item key={language.name}>
                   <Style.ItemName>{language.name}</Style.ItemName>
                   {` — ${language.level}`}
@@ -41,9 +44,9 @@ function SkillsSection() {
 
         <Reveal delay={70}>
           <Style.Group>
-            <Style.GroupName>Certifications</Style.GroupName>
+            <Style.GroupName>{content.certificationsTitle}</Style.GroupName>
             <Style.List>
-              {data.certifications.map((certification) => (
+              {content.certifications.map((certification) => (
                 <Style.Item key={certification}>{certification}</Style.Item>
               ))}
             </Style.List>

@@ -2,15 +2,18 @@ import React, { memo } from 'react';
 
 import Section from 'components/Section';
 import Reveal from 'components/Reveal';
+import { useTranslation } from 'i18n';
 
 import data from './data';
 import Style from './styles';
 
 function ProjectsSection() {
+  const content = useTranslation(data);
+
   return (
-    <Section id="projects" eyebrow={data.eyebrow} title={data.title}>
+    <Section id="projects" eyebrow={content.eyebrow} title={content.title}>
       <Style.Grid>
-        {data.projects.map((project, index) => (
+        {content.projects.map((project, index) => (
           <li key={project.name}>
             <Reveal delay={(index % 3) * 70}>
               <Style.Card
@@ -29,11 +32,11 @@ function ProjectsSection() {
 
       <Reveal>
         <Style.More
-          href={data.more.href}
+          href={content.more.href}
           target="_blank"
           rel="noreferrer noopener"
         >
-          {data.more.label}
+          {content.more.label}
         </Style.More>
       </Reveal>
     </Section>

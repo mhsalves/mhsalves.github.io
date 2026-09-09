@@ -33,6 +33,12 @@ const Home = styled.a`
   text-decoration: none;
 `;
 
+const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
 const Nav = styled.nav`
   display: none;
 
@@ -67,6 +73,7 @@ export default {
   Container,
   Inner,
   Home,
+  Actions,
   Nav,
   NavList,
   NavLink,

@@ -2,17 +2,26 @@ import React, { memo } from 'react';
 
 import Section from 'components/Section';
 import Reveal from 'components/Reveal';
+import { useTranslation } from 'i18n';
 
 import data from './data';
 import Style from './styles';
 
 function ContactSection() {
-  return (
-    <Section id="contact" eyebrow={data.eyebrow} title={data.title}>
-      <Reveal>
-        <Style.Description>{data.description}</Style.Description>
+  const content = useTranslation(data);
 
-        <Style.Action href={data.action.href}>{data.action.label}</Style.Action>
+  return (
+    <Section id="contact" eyebrow={content.eyebrow} title={content.title}>
+      <Reveal>
+        <Style.Description>{content.description}</Style.Description>
+
+        <Style.Action
+          href={content.action.href}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          {content.action.label}
+        </Style.Action>
 
         <Style.Links>
           {data.links.map((link) => (
@@ -28,7 +37,7 @@ function ContactSection() {
           ))}
         </Style.Links>
 
-        <Style.Location>{data.location}</Style.Location>
+        <Style.Location>{content.location}</Style.Location>
       </Reveal>
     </Section>
   );
