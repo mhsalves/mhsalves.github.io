@@ -1,51 +1,94 @@
-# next-ghpages-template
-Um template para clients que precisem usar o Github Pages, React e SSR usando [NextJS](https://nextjs.org/).
+# mhsalves.github.io
+
+Meu site pessoal e portfólio, no ar em **[matheusalves.dev](https://matheusalves.dev/)**.
+
+É um site estático feito com [NextJS](https://nextjs.org/) e [styled-components](https://styled-components.com/), exportado como HTML/CSS/JS puro e servido pelo [GitHub Pages](https://pages.github.com/) a partir da pasta `docs/` da branch `main`, sob o domínio customizado `matheusalves.dev`.
 
 *Leia em outras línguas: [English](README.md), [Português Brasileiro](README.pt-br.md)*
 
-## Este projeto utiliza as seguintes dependências principais
+## Tecnologias
 
-- [NextJS](https://nextjs.org/) como Framework de React para SSR. (Detalhes em [#2](https://github.com/mhsalves/next-ghpages-template/pull/2))
+- [NextJS](https://nextjs.org/) como framework React, usado em modo de exportação estática.
+- [styled-components](https://styled-components.com/) para estilos e temas.
+- [Jest](https://jestjs.io/) + [Enzyme](https://enzymejs.github.io/enzyme/) para testes, com cobertura mínima de 100%.
+- [ESLint](https://eslint.org/) (configuração airbnb) para o lint.
+- [CircleCI](https://circleci.com/) para rodar a suíte de testes a cada push.
 
+## Pré-requisitos
 
-## Documentação
+- [Node.js](https://nodejs.org/) 20.x (versão usada atualmente no projeto)
+- [npm](https://www.npmjs.com/) 10.x
 
-- [Como configurar Github Pages](#configurando-github-pages)
-- [Como executar um deploy](#deploy)
-  - [Configurando minha página pessoal](#configurando-minha-página-pessoal)
+O `yarn.lock` também está versionado, mas está desatualizado — instalar via Yarn 1 hoje gera uma árvore em que a suíte de testes não consegue iniciar, então prefira o npm.
 
-### Configurando Github Pages
+## Rodando localmente
 
-Veja este [artigo](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+Clone o repositório e instale as dependências:
 
-### Deploy
-
-Este projeto contém um simples sistema de deploy para o github pages.
+```bash
+git clone git@github.com:mhsalves/mhsalves.github.io.git
+cd mhsalves.github.io
+npm install --legacy-peer-deps
 ```
-npm run deploy
+
+> O `--legacy-peer-deps` é necessário: o projeto usa React 17 enquanto o `enzyme-adapter-react-16` ainda declara peer dependency de React 16, então um `npm install` normal falha com erro `ERESOLVE`.
+
+Suba o servidor de desenvolvimento:
+
+```bash
+npm run dev
 ```
-Por padrão, nós usamos a branch `master` para armazenar o código fonte do projeto e a branch `gh-pages` para os arquivos compilados pelo NextJS e servido como página.
 
-O script principal executa outros scripts de deploy nos quais especificam cada passo do deploy. Os mesmos são:
-- `deploy:export` gera os arquivos de build e de exportação feitos pelos scripts de build e export do [NextJS](https://nextjs.org/).
-- `deploy:setup` adiciona os arquivos de configuração do github pages ou qualquer outro que necessite, como `.nojekyll` or `CNAME`.
-- `deploy:commit` cria um commit com os arquivos de deploy, em outras palavras, cria um commit com os arquivos da pasta `out` gerados pelo `npm run deploy:export`.
-- `deploy:stage` cria uma branch auxiliar para apontar pro commit criado anteriormente e adicioná-lo em uma subtree.
-- `deploy:push` executa um push forçado da branch auxiliar para a branch configurada para a página (gh-pages).
+O site fica disponível em [http://localhost:3000](http://localhost:3000) com hot reload.
 
-#### Configurando minha página pessoal
+Para conferir a saída de produção localmente, gere o build e suba o servidor de produção:
 
-Quando nós estamos criando nossa página pessoal (por exemplo, mhsalves.github.io) o github nos força a usar a branch `master` como branch da página. Então nós somos obrigados a usar a branch `master` como nossa branch de arquivos compilados pelo NextJS.
+```bash
+npm run build
+npm start
+```
 
-Nesse caso, nós mantemos o método de deploy atual, porém precisamos fazer algumas adaptações. Primeiro, nós precisamos criar uma nova branch de projeto, por exemplo, `my-source` (você pode usar qualquer nome, mas eu aconselho utilizar algum que faça sentido como `source/master`, `main` e etc).
+## Scripts disponíveis
 
-Segundo, configurar o projeto para usar `my-source` como a branch padrão.
+| Script | O que faz |
+| --- | --- |
+| `npm run dev` | Sobe o servidor de desenvolvimento do NextJS na porta 3000. |
+| `npm run build` | Gera o bundle de produção em `dist/.next`. |
+| `npm start` | Serve o build de produção localmente. |
+| `npm run export` | Exporta o build como site estático em `docs/`. |
+| `npm run eslint` | Roda o lint em todos os arquivos `.js` e `.jsx` de `src/`. |
+| `npm test` | Roda a suíte do Jest com cobertura. |
+| `npm run release:gp` | Faz build, export e commit do site estático para o GitHub Pages. Veja [DEPLOY.pt-br.md](DEPLOY.pt-br.md). |
+| `npm run release:netlify` | Faz build e export do site, sem as etapas do GitHub Pages. |
 
-<img width="768" alt="Settings Panel to set default branch" src="https://user-images.githubusercontent.com/30807170/67357750-49617280-f52c-11e9-9669-724006a33521.png">
+## Estrutura do projeto
 
-Terceiro, atualizar o script de `deploy:push` no arquivo `package.json` mudando `gh-pages` para `master`.
+```
+src/
+├── bosons/      Blocos base (temas, CSS global, meta tags, carregamento de fontes)
+├── components/  Componentes reutilizáveis
+├── hoc/         Higher-order components (ex.: withTheme)
+├── pages/       Páginas do NextJS (_app, _document, index)
+├── public/      Arquivos estáticos copiados para a raiz do site
+└── sections/    Seções da página (PresentationSection, AboutSection)
 
-Como resultado, sua branch do projeto será `my-source` então todos os _pull requests_ serão mergiados nele e toda vez que for executado um comando de deploy todos os novos arquivos serão adicionados na branch `master`.
+docs/            Site estático exportado e publicado pelo GitHub Pages (gerado)
+dist/            Saída de build do NextJS (gerada, ignorada pelo git)
+.jest/           Configuração e setup do Jest
+```
 
-Qualquer problema, por favor reporte uma [issue](https://github.com/mhsalves/next-ghpages-template/issues/new).
- 
+## Testes
+
+```bash
+npm test
+```
+
+A cobertura mínima está em 100% para branches, funções, linhas e statements no arquivo `.jest/config.js`, então qualquer queda de cobertura quebra a suíte.
+
+## Deploy
+
+O site é publicado no GitHub Pages a partir da pasta `docs/` da branch `main`. O processo completo está documentado em **[DEPLOY.pt-br.md](DEPLOY.pt-br.md)** ([English](DEPLOY.md)).
+
+## Licença
+
+[MIT](LICENSE)
