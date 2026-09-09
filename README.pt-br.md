@@ -11,13 +11,19 @@ Meu site pessoal e portfólio, no ar em **[matheusalves.dev](https://matheusalve
 - [NextJS](https://nextjs.org/) como framework React, usado em modo de exportação estática.
 - [styled-components](https://styled-components.com/) para estilos e temas.
 - [Jest](https://jestjs.io/) + [Enzyme](https://enzymejs.github.io/enzyme/) para testes, com cobertura mínima de 100%.
-- [ESLint](https://eslint.org/) (configuração airbnb) para o lint.
+- [ESLint](https://eslint.org/) com o `eslint-config-next`, preset do próprio framework, para o lint.
 - [CircleCI](https://circleci.com/) para rodar a suíte de testes a cada push.
 
 ## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) 20.x (o CI roda 20.12.2)
-- [Yarn](https://classic.yarnpkg.com/) 1.x — o projeto versiona um `yarn.lock`, e o CI instala a partir dele
+- [Yarn](https://yarnpkg.com/) 4.18.0 — fixado pelo campo `packageManager` e versionado em `.yarn/releases`
+
+Você não precisa instalar exatamente essa versão: o release está versionado no repositório e o `.yarnrc.yml` aponta para ele, então qualquer Yarn que você já tenha delega para essa versão. Se não tiver nenhum, habilite o que vem junto com o Node:
+
+```bash
+corepack enable
+```
 
 ## Rodando localmente
 

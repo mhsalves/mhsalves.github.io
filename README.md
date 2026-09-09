@@ -11,13 +11,19 @@ It is a static site built with [NextJS](https://nextjs.org/) and [styled-compone
 - [NextJS](https://nextjs.org/) as the React framework, used in static export mode.
 - [styled-components](https://styled-components.com/) for styling and theming.
 - [Jest](https://jestjs.io/) + [Enzyme](https://enzymejs.github.io/enzyme/) for tests, with 100% coverage thresholds.
-- [ESLint](https://eslint.org/) (airbnb config) for linting.
+- [ESLint](https://eslint.org/) with `eslint-config-next`, the framework's own preset, for linting.
 - [CircleCI](https://circleci.com/) to run the test suite on every push.
 
 ## Requirements
 
 - [Node.js](https://nodejs.org/) 20.x (CI runs 20.12.2)
-- [Yarn](https://classic.yarnpkg.com/) 1.x — the project ships a `yarn.lock`, and CI installs from it
+- [Yarn](https://yarnpkg.com/) 4.18.0 — pinned by the `packageManager` field, and committed to `.yarn/releases`
+
+You do not need to install that exact Yarn yourself: the release is versioned in the repository and `.yarnrc.yml` points at it, so any Yarn already on your machine hands off to it. If you have none, enable the one bundled with Node:
+
+```bash
+corepack enable
+```
 
 ## Running locally
 
