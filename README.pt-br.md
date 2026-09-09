@@ -9,6 +9,9 @@ puro e servido pelo [GitHub Pages](https://pages.github.com/) a partir da pasta
 
 *Leia em outras línguas: [English](README.md), [Português Brasileiro](README.pt-br.md)*
 
+> Tradução. A referência é o [README.md](README.md) em inglês — se os dois
+> discordarem, o inglês está certo.
+
 ## Tecnologias
 
 - [NextJS](https://nextjs.org/) como framework React, em modo de exportação estática

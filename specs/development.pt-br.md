@@ -4,6 +4,9 @@ Como rodar o projeto e o que cada script faz.
 
 *Leia em outras línguas: [English](development.md), [Português Brasileiro](development.pt-br.md)*
 
+> Tradução. A referência é o [development.md](development.md) em inglês — se os
+> dois discordarem, o inglês está certo.
+
 ## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) 20.x

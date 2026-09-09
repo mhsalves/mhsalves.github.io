@@ -4,6 +4,9 @@ Como o [matheusalves.dev](https://matheusalves.dev/) é publicado.
 
 *Leia em outras línguas: [English](deploy.md), [Português Brasileiro](deploy.pt-br.md)*
 
+> Tradução. A referência é o [deploy.md](deploy.md) em inglês — se os dois
+> discordarem, o inglês está certo.
+
 ## Como funciona
 
 Este repositório é um **site de usuário** (`mhsalves.github.io`), então o GitHub Pages o serve direto daqui, em vez de usar uma branch `gh-pages` separada. A origem da publicação é:

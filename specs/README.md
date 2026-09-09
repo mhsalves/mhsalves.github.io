@@ -9,5 +9,11 @@ overview and points here.
 | [development.md](development.md) · [pt-br](development.pt-br.md) | Requirements, running locally, every script, tests and linting. |
 | [deploy.md](deploy.md) · [pt-br](deploy.pt-br.md) | How the site reaches GitHub Pages: the build, the deploy pull request, and troubleshooting. |
 
-Anything bilingual keeps English as the primary file and `*.pt-br.md` alongside
-it. `architecture.md` is English only, since it is about the code.
+## Languages
+
+**The English file is the source of truth; `*.pt-br.md` is a translation of it**
+so Brazilian readers have a version in their own language. If the two disagree,
+the English one is right and the translation is stale. Record a decision in the
+English file and mirror it across — never only in the translation.
+
+`architecture.md` is English only, since it is about the code.
