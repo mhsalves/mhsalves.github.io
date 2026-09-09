@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalCSS from '../bosons/globalCSS';
-import themes from '../bosons/themes';
+import themes from 'styles/themes';
 import FontLoader from '../bosons/FontLoader';
 
 function MySpiderApp(props) {

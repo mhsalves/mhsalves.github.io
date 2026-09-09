@@ -82,7 +82,7 @@ src/
 │   ├── PresentationSection/
 │   └── AboutSection/
 ├── styles/            Everything about how the app looks, globally
-│   ├── theme/         Design tokens (was bosons/themes)
+│   ├── themes/        Design tokens; exports a registry, so plural
 │   ├── global/        Reset + normalize (was bosons/globalCSS)
 │   └── FontLoader/    Web font loading (was bosons/FontLoader)
 ├── pages/             Next routes. Thin: compose sections, nothing else
@@ -104,7 +104,7 @@ The rules that make it decidable:
 
 | Today | Target | Why |
 | --- | --- | --- |
-| `bosons/themes/` | `styles/theme/` | It is the design-token source |
+| `bosons/themes/` | `styles/themes/` | It is the design-token source |
 | `bosons/globalCSS/` | `styles/global/` | Global CSS is a styling concern |
 | `bosons/FontLoader/` | `styles/FontLoader/` | Loading a font is styling |
 | `bosons/MetaTags/` | `components/MetaTags/` | It renders `<head>` markup; it is a component |
@@ -141,7 +141,7 @@ Then the four-level climb becomes:
 
 ```js
 import withTheme from 'test-utils/withTheme';
-import themes from 'styles/theme';
+import themes from 'styles/themes';
 ```
 
 Moving a file stops rewriting imports in files that did not change.
@@ -157,7 +157,7 @@ If a snapshot changes, something moved that should not have.
    single absolute import resolves in both Jest and the build before going on.
    Jest needs `modulePaths` or `moduleDirectories` pointing at `src` to agree
    with it — settle that here, while there is only one import to debug.
-2. **`bosons/themes` → `styles/theme`.** The largest move and the only one with
+2. **`bosons/themes` → `styles/themes`.** The largest move and the only one with
    tests attached, so do it alone. `__tests__/`, `__mock__/` and
    `__snapshots__/` travel with it.
 3. **`bosons/globalCSS` → `styles/global`** and **`bosons/FontLoader` →
