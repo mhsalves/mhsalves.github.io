@@ -119,18 +119,25 @@ hook.
 
 ### Absolute imports
 
-Add a `jsconfig.json` at the repository root so `src` is the import base:
+Add a `jsconfig.json` **inside `src/`**, so `src` is the import base:
 
 ```json
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "."
   }
 }
 ```
 
-Next 12 reads this natively, no webpack config needed. Then the four-level climb
-becomes:
+The location matters. The npm scripts run `next build src`, so `src` is the
+project directory Next reads its config from — a `jsconfig.json` at the
+repository root is ignored and the build fails with
+`Module not found: Can't resolve 'sections/PresentationSection'`.
+
+Next 12 reads this natively, no webpack config needed. Jest does not read
+`jsconfig.json` at all, so `.jest/config.js` mirrors it with
+`moduleDirectories: ['node_modules', '<rootDir>/src']`. Both have to agree.
+Then the four-level climb becomes:
 
 ```js
 import withTheme from 'test-utils/withTheme';

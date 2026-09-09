@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PresentationSection from '../sections/PresentationSection';
+import PresentationSection from 'sections/PresentationSection';
 
 import BasicMetaTags from '../bosons/MetaTags/Basic';
 import ShareMetaTags from '../bosons/MetaTags/Share';
