@@ -2,7 +2,7 @@
 
 Como o [matheusalves.dev](https://matheusalves.dev/) é publicado.
 
-*Leia em outras línguas: [English](DEPLOY.md), [Português Brasileiro](DEPLOY.pt-br.md)*
+*Leia em outras línguas: [English](deploy.md), [Português Brasileiro](deploy.pt-br.md)*
 
 ## Como funciona
 
