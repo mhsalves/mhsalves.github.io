@@ -2,7 +2,10 @@
 
 Como o [matheusalves.dev](https://matheusalves.dev/) é publicado.
 
-*Leia em outras línguas: [English](DEPLOY.md), [Português Brasileiro](DEPLOY.pt-br.md)*
+*Leia em outras línguas: [English](deploy.md), [Português Brasileiro](deploy.pt-br.md)*
+
+> Tradução. A referência é o [deploy.md](deploy.md) em inglês — se os dois
+> discordarem, o inglês está certo.
 
 ## Como funciona
 
@@ -14,8 +17,13 @@ Este repositório é um **site de usuário** (`mhsalves.github.io`), então o Gi
 Ou seja, o site estático exportado é versionado dentro de `docs/`. O que estiver em `docs/` na `main` é exatamente o que as pessoas veem. Não existe build rodando do lado do GitHub — o build acontece localmente e o resultado é enviado no push.
 
 ```
-src/  ──(next build)──>  dist/.next  ──(next export)──>  docs/  ──(git push)──>  GitHub Pages ──> matheusalves.dev
+src/  ──(next build)──>  dist/.next  ──(next export)──>  docs/  ──(pull request)──>  main ──> Pages ──> matheusalves.dev
 ```
+
+Não existe branch `gh-pages`, nem branch `docs`. Havia uma branch `docs` antiga
+que guardava um build na raiz do repositório; ela ficou obsoleta quando o site
+passou a ser servido de `main` + `/docs` e foi removida. Ficou arquivada na tag
+`archive/docs-branch`, caso algum dia seja necessária.
 
 Dois arquivos em `docs/` existem apenas para o Pages se comportar corretamente:
 
@@ -26,14 +34,22 @@ Os dois arquivos são recriados a cada release, porque a etapa de export limpa a
 
 ## Publicando
 
-Com a branch `main` atualizada e a árvore de trabalho limpa:
+**Um deploy é um build mais um pull request. Nada vai direto para a `main`.**
+
+Com a `main` atualizada e a árvore de trabalho limpa:
 
 ```bash
+npm version patch --no-git-tag-version   # ou minor / major
 npm run release:gp
-git push origin main
 ```
 
-O push é uma etapa separada de propósito, para você conseguir revisar o diff gerado antes de torná-lo público.
+Isso gera o build e abre um pull request chamado **`deploy: version X.Y.Z`**
+para a `main`, em que `X.Y.Z` é a `version` do `package.json`. **É o merge desse
+pull request que publica o site** — o GitHub Pages pega o novo `docs/` da `main`
+em cerca de um minuto.
+
+Assim todo deploy tem um diff revisável e um número de versão, e a `main` só
+avança por merge.
 
 ## O que o `release:gp` faz
 
@@ -44,13 +60,27 @@ O `release:gp` é uma sequência de quatro scripts menores, definidos no `packag
 | 1 | `npm run build` | `next build src` compila o bundle de produção em `dist/.next` (ignorado pelo git). |
 | 2 | `npm run export` | `next export -o docs/ src` gera o HTML/CSS/JS estático em `docs/`, limpando a pasta antes. |
 | 3 | `npm run release:gp:setup` | Recria `docs/.nojekyll` e escreve `matheusalves.dev` em `docs/CNAME`. |
-| 4 | `npm run release:gp:commit` | Executa `git add docs/` e cria o commit com a mensagem `release: new features`. |
+| 4 | `npm run release:gp:publish` | Roda o `scripts/deploy.sh`: cria a `deploy/vX.Y.Z`, commita o `docs/` como `deploy: version X.Y.Z`, faz push e abre o pull request. |
 
 Cada etapa pode ser executada isoladamente, o que ajuda a depurar um release quebrado.
 
-## Conferindo antes do push
+O `scripts/deploy.sh` se recusa a rodar quando existe qualquer alteração não
+commitada fora de `docs/`, para a branch de deploy carregar só o site gerado. Se
+o `docs/` sair idêntico ao que já está commitado, ele avisa que não há nada para
+publicar e para. O pull request é aberto com a CLI `gh`; sem ela, o script
+imprime o comando e um link de comparação.
 
-Depois de rodar o release, teste o export localmente em vez de confiar apenas no diff:
+### Versionamento
+
+A `version` do `package.json` é o nome do release, então incremente antes de
+publicar — `npm version patch --no-git-tag-version` para mudança de conteúdo,
+`minor` para novas seções ou funcionalidades. Publicar duas vezes sem
+incrementar reaproveita o mesmo nome de branch, que o script reutiliza em vez de
+duplicar.
+
+## Conferindo antes do merge
+
+Antes de mergear o pull request de deploy, teste o export localmente em vez de confiar apenas no diff:
 
 ```bash
 npx serve docs
@@ -61,10 +91,10 @@ Abra [http://localhost:3000](http://localhost:3000) (ou a porta exibida no termi
 ```bash
 cat docs/CNAME        # deve conter exatamente: matheusalves.dev
 ls -a docs/.nojekyll  # deve existir
-git show --stat       # revise o que o commit de release alterou
+git show --stat       # revise o que o commit de deploy alterou
 ```
 
-Depois do push, o GitHub Pages costuma publicar em menos de um minuto. O status do deploy aparece em **Settings → Pages** e na aba **Deployments** do repositório.
+Depois do merge, o GitHub Pages costuma publicar em menos de um minuto. O status do deploy aparece em **Settings → Pages** e na aba **Deployments** do repositório.
 
 ## Configurando o Pages do zero
 
