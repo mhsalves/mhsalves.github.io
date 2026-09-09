@@ -4,4 +4,10 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - node/test
+      # This project ships a yarn.lock and no package-lock.json, so the job has
+      # to be told to use yarn: the orb defaults to npm and would run `npm ci`,
+      # which fails without a package-lock.json. The version is pinned because
+      # the orb otherwise defaults to Node 13.11.0, long out of support.
+      - node/test:
+          version: '20.12.2'
+          pkg-manager: yarn
