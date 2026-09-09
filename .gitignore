@@ -1,6 +1,13 @@
 # npm
 node_modules
 
+# Yarn: the release is versioned so every install uses the same binary,
+# everything else is local state.
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+.pnp.*
+
 # Next
 dist/
 
