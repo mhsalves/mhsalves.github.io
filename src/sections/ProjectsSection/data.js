@@ -6,7 +6,7 @@ const repositories = [
   { name: 'client-website-boilerplate', language: 'TypeScript' },
   { name: 'react-basic-project', language: 'JavaScript' },
   { name: 'react-library-example-code-splitting', language: 'JavaScript' },
-  { name: 'yugioh-fb-catalog', language: 'TypeScript' },
+  { name: 'yugioh-fm-catalog', language: 'TypeScript' },
 ];
 
 const descriptions = {
@@ -16,7 +16,7 @@ const descriptions = {
     'client-website-boilerplate': 'Module template for micro-frontend systems.',
     'react-basic-project': 'Educational repository built for teaching React.',
     'react-library-example-code-splitting': 'Example library for testing code splitting with React.',
-    'yugioh-fb-catalog': 'Tools for retrieving data from Yu-Gi-Oh! Forbidden Memories.',
+    'yugioh-fm-catalog': 'Tools for retrieving data from Yu-Gi-Oh! Forbidden Memories.',
   },
   pt: {
     'next-ghpages-template': 'Template que junta GitHub Pages, React e renderização no servidor com Next.js. Este site nasceu dele.',
@@ -24,7 +24,7 @@ const descriptions = {
     'client-website-boilerplate': 'Template de módulo para sistemas de micro-frontends.',
     'react-basic-project': 'Repositório educacional feito para ensinar React.',
     'react-library-example-code-splitting': 'Biblioteca de exemplo para testar code splitting com React.',
-    'yugioh-fb-catalog': 'Ferramentas para extrair dados do Yu-Gi-Oh! Forbidden Memories.',
+    'yugioh-fm-catalog': 'Ferramentas para extrair dados do Yu-Gi-Oh! Forbidden Memories.',
   },
 };
 

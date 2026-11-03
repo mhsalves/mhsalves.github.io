@@ -29,6 +29,10 @@ Two files in `docs/` exist only to make Pages behave:
 
 Both files are regenerated on every release, because the export step wipes `docs/` before writing to it.
 
+### Moved project sites
+
+Every repository with Pages enabled is served under `matheusalves.dev/<repo>/`. When one is renamed, its old path stops existing and falls through to this site's `404.html`. GitHub Pages has no server-side redirects, so `src/pages/404.jsx` carries a `MOVED` map and a small inline script that sends an old path to its new home, keeping the rest of the path, the query string and the hash. Today it maps `/yugioh-fb-catalog` to `/yugioh-fm-catalog`. To add another rename, add an entry to `MOVED` and deploy.
+
 ## Releasing
 
 **A deploy is a build plus a pull request. Nothing is pushed straight to

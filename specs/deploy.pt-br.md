@@ -32,6 +32,10 @@ Dois arquivos em `docs/` existem apenas para o Pages se comportar corretamente:
 
 Os dois arquivos são recriados a cada release, porque a etapa de export limpa a pasta `docs/` antes de escrever nela.
 
+### Project sites que mudaram de endereço
+
+Todo repositório com o Pages ativo é servido em `matheusalves.dev/<repo>/`. Quando um deles é renomeado, o caminho antigo deixa de existir e cai no `404.html` deste site. O GitHub Pages não tem redirecionamento no servidor, então o `src/pages/404.jsx` tem um mapa `MOVED` e um pequeno script inline que manda o caminho antigo para o novo endereço, mantendo o resto do caminho, a query string e o hash. Hoje ele mapeia `/yugioh-fb-catalog` para `/yugioh-fm-catalog`. Para outra renomeação, adicione uma entrada no `MOVED` e publique.
+
 ## Publicando
 
 **Um deploy é um build mais um pull request. Nada vai direto para a `main`.**
